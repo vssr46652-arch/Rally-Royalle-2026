@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RALLY ROYALLE — Tennis Tournament</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+:root{--bg:#06100c;--panel:#0a1712;--gold:#caa45b;--gold2:#efd39a;--cream:#f5f0e5;--muted:#aaa99e;--line:#caa45b55}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--cream);font-family:Inter,Arial,sans-serif}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 80% 10%,#caa45b0d,transparent 32%),radial-gradient(circle at 10% 80%,#0c5b4315,transparent 35%);z-index:-1}
+a{text-decoration:none;color:inherit}.layout{display:flex;min-height:100vh}.sidebar{position:fixed;left:0;top:0;bottom:0;width:240px;background:linear-gradient(180deg,#030a07f7,#07130ef7);border-right:1px solid var(--line);z-index:20;padding:25px 20px;display:flex;flex-direction:column}
+.crest{width:72px;height:72px;border:1px solid var(--gold);border-radius:50%;margin:5px auto 10px;display:grid;place-items:center;color:var(--gold);font:700 29px "Cormorant Garamond",serif;position:relative}.crest:before{content:"♛";position:absolute;top:-20px;font-size:20px}.brand{text-align:center;color:var(--gold2);font:700 19px "Cormorant Garamond",serif;letter-spacing:3px}
+nav{margin-top:48px;display:grid;gap:5px}nav a{padding:14px 10px;border-left:2px solid transparent;color:#d9d4c8;font-size:11px;letter-spacing:1.8px;text-transform:uppercase;transition:.2s}nav a:hover,nav a.active{color:var(--gold2);border-left-color:var(--gold);background:#fff3}
+.social{margin-top:auto;text-align:center;color:var(--gold);letter-spacing:13px;font-size:14px}.copy{text-align:center;color:#706f68;font-size:9px;letter-spacing:1.5px;margin-top:20px;text-transform:uppercase}
+main{margin-left:240px;width:calc(100% - 240px)}section{min-height:100vh;padding:80px clamp(25px,6vw,90px);position:relative;overflow:hidden}.hero{display:flex;align-items:center;background-image:linear-gradient(90deg,#04100be8 0%,#04100b88 55%,#04100b33 100%),url( + bg_data + r);background-size:cover;background-position:center}.hero:after{content:"";position:absolute;inset:auto 0 0;height:25%;background:linear-gradient(transparent,var(--bg));pointer-events:none}.hero-content{max-width:920px;position:relative;z-index:1}.eyebrow{font-size:10px;letter-spacing:5px;color:var(--gold);text-transform:uppercase}.hero h1{font:600 clamp(60px,9vw,130px)/.78 "Cormorant Garamond",serif;letter-spacing:3px;margin:25px 0;color:#fff}.hero h1 span{color:var(--gold2)}.sub{font-size:13px;letter-spacing:7px;text-transform:uppercase;margin:28px 0 48px}.details{display:flex;border-top:1px solid var(--line);border-bottom:1px solid var(--line);max-width:850px}.detail{padding:20px 30px 20px 0;margin-right:30px;border-right:1px solid var(--line)}.detail:last-child{border:0}.detail label{display:block;color:var(--gold);font-size:9px;letter-spacing:3px;text-transform:uppercase;margin-bottom:7px}.detail strong{font:600 22px "Cormorant Garamond",serif}.btn{display:inline-block;margin-top:28px;padding:14px 22px;border:1px solid var(--gold);color:var(--gold2);font-size:10px;letter-spacing:2px;text-transform:uppercase}
+.alt{background:#f3eee2;color:#14251d}.eyebrow{position:relative}.title{font:600 clamp(45px,6vw,78px)/.9 "Cormorant Garamond",serif;margin:13px 0 20px}.lead{max-width:760px;color:var(--muted);line-height:1.9;font-size:14px}.alt .lead{color:#60645d}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:38px}.card{padding:28px;border:1px solid var(--line);background:#ffffff05}.alt .card{border-color:#14251d22;background:#fff8}.card h3{font:600 31px "Cormorant Garamond",serif;color:var(--gold2);margin:0 0 10px}.alt .card h3{color:#8d6b31}.card p{line-height:1.8;color:var(--muted);font-size:14px}.alt .card p{color:#60645d}.quote{font:600 36px/1.15 "Cormorant Garamond",serif;color:var(--gold2);max-width:800px;margin-top:50px}
+.venue-photo{height:360px;margin-top:35px;background-image:linear-gradient(#06100c22,#06100c77),url( + bg_data + r);background-size:cover;background-position:center;border:1px solid var(--line)}.facts{display:grid;grid-template-columns:repeat(3,1fr);margin-top:1px}.fact{padding:24px;background:#0a1913;border-right:1px solid var(--line)}.fact b{display:block;font:600 36px "Cormorant Garamond",serif;color:var(--gold2)}.fact span{font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase}
+.form{max-width:760px;display:grid;gap:14px;margin-top:30px}.form input,.form select,.form textarea{width:100%;padding:15px;border:1px solid #bfb7a7;background:#fff;color:#17241e;font:inherit}.form button{padding:16px;border:1px solid var(--gold);background:#0a1b14;color:var(--gold2);font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer}.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:25px}.links a{padding:13px 17px;border:1px solid var(--line);font-size:10px;letter-spacing:1.5px;color:var(--gold2);text-transform:uppercase}
+.scores{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:35px}.score{background:#091812;border:1px solid var(--line);padding:25px}.live{font-size:9px;letter-spacing:2px;color:#7ad29b}.score h3{font:600 27px "Cormorant Garamond",serif;margin:12px 0}.num{font-size:38px;font-weight:700;color:var(--gold2);margin:15px 0}.small{font-size:11px;color:var(--muted)}
+footer{background:#030907;color:#777;padding:25px;text-align:center;font-size:9px;letter-spacing:2px;text-transform:uppercase}
+@media(max-width:800px){.layout{display:block}.sidebar{position:relative;width:100%;height:auto;padding:18px;display:block}.sidebar nav{display:flex;overflow-x:auto;margin-top:20px}.sidebar nav a{white-space:nowrap}.social,.copy{display:none}main{margin:0;width:100%}section{padding:55px 23px}.hero{min-height:90vh}.details{flex-wrap:wrap}.detail{border:0;margin:0 25px 0 0}.grid,.scores{grid-template-columns:1fr}.facts{grid-template-columns:1fr}.venue-photo{height:280px}.hero h1{font-size:70px}}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+<a href="#home"><div class="crest">RR</div><div class="brand">RALLY ROYALLE</div></a>
+<nav>
+<a href="#home" class="active">Home</a>
+<a href="#about">About & Sponsors</a>
+<a href="#venue">The Venue</a>
+<a href="#register">Register</a>
+<a href="#contact">Contact Us</a>
+<a href="https://www.google.com/maps/search/?api=1&query=Sarojini%20Tennis%20Court" target="_blank">Directions</a>
+<a href="#scores">Live Scores</a>
+</nav>
+<div class="social">◎ ◇ ✉</div><div class="copy">© 2026 Rally Royalle<br>All Rights Reserved</div>
+</aside>
+<main>
+<section id="home" class="hero">
+<div class="hero-content">
+<div class="eyebrow">Welcome to</div>
+<h1>RALLY <span>ROyALLE</span></h1>
+<div class="sub">Tennis Tournament</div>
+<div class="details">
+<div class="detail"><label>Date</label><strong>October 2nd, 2026</strong></div>
+<div class="detail"><label>Venue</label><strong>Sarojini Tennis Court</strong></div>
+<div class="detail"><label>Time</label><strong>6:00 AM – 7:00 PM</strong></div>
+</div>
+<a class="btn" href="#register">Register Now →</a>
+</div>
+</section>
+
+<section id="about" class="alt">
+<div class="eyebrow">02 — The People Behind The Event</div>
+<h2 class="title">Kiran Sir &amp;<br>Our Sponsors</h2>
+<p class="lead">Rally Royalle is brought together with the support of Kiran Sir and OM Sports. This space is ready for a personal message, profile and sponsor presentation.</p>
+<div class="grid">
+<article class="card"><h3>Kiran Sir</h3><p>Add Kiran Sir’s biography, role, tennis journey or message to the players here.</p></article>
+<article class="card"><h3>OM Sports</h3><p>Official sponsor area. Add the OM Sports logo, business details, website and sponsor message here.</p></article>
+</div>
+<div class="quote">“Play with character. Compete with courage. Leave the court with memories.”</div>
+</section>
+
+<section id="venue">
+<div class="eyebrow">03 — The Home of Rally Royalle</div>
+<h2 class="title">Sarojini<br><span style="color:var(--gold2)">Tennis Court</span></h2>
+<p class="lead">A dedicated venue page for tournament-day information, facilities and directions.</p>
+<div class="venue-photo"></div>
+<div class="facts"><div class="fact"><b>3</b><span>Courts</span></div><div class="fact"><b>6 AM</b><span>Start</span></div><div class="fact"><b>7 PM</b><span>Closing</span></div></div>
+<div class="links"><a href="https://www.google.com/maps/search/?api=1&query=Sarojini%20Tennis%20Court" target="_blank">Directions ↗</a></div>
+</section>
+
+<section id="register" class="alt">
+<div class="eyebrow">04 — Secure Your Place</div>
+<h2 class="title">Register for<br>Rally Royalle</h2>
+<p class="lead">Junior Singles — ₹550 per player · Senior Doubles — ₹600 per player.</p>
+<form class="form" onsubmit="event.preventDefault();alert('Demo registration submitted. Connect this form to Google Forms or a database for real registrations.');">
+<input required placeholder="Full name">
+<select required><option value="">Select category</option><option>Junior Singles — ₹550</option><option>Senior Doubles — ₹600 per player</option></select>
+<input type="tel" placeholder="Phone / WhatsApp">
+<input placeholder="Doubles partner name (Senior only)">
+<textarea rows="4" placeholder="Message to organizers"></textarea>
+<button type="submit">Submit Registration</button>
+</form>
+<div id="contact" class="links">
+<a href="tel:+910000000000">Contact Us ☎</a>
+<a href="https://www.google.com/maps/search/?api=1&query=Sarojini%20Tennis%20Court" target="_blank">Directions ↗</a>
+<a href="#scores">Live Scores ●</a>
+</div>
+</section>
+
+<section id="scores">
+<div class="eyebrow">Tournament Day</div>
+<h2 class="title">Live<br><span style="color:var(--gold2)">Scores</span></h2>
+<p class="lead">Three dedicated court displays. These starter scores can be replaced with real-time updates from your organizers.</p>
+<div class="scores">
+<article class="score"><div class="live">● LIVE — COURT 1</div><h3>Junior Singles</h3><div>Player 1 vs Player 2</div><div class="num">4 — 3</div><div class="small">Set 1</div></article>
+<article class="score"><div class="live">● LIVE — COURT 2</div><h3>Senior Doubles</h3><div>Team A vs Team B</div><div class="num">2 — 4</div><div class="small">Set 1</div></article>
+<article class="score"><div class="live">● LIVE — COURT 3</div><h3>Junior Singles</h3><div>Player 3 vs Player 4</div><div class="num">5 — 5</div><div class="small">Set 1</div></article>
+</div>
+</section>
+<footer>Rally Royalle · October 2nd, 2026 · Sarojini Tennis Court</footer>
+</main>
+</div>
+<script>
+const links=[...document.querySelectorAll('nav a[href^="#"]')];
+const sections=[...document.querySelectorAll('main section')];
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}}),{rootMargin:'-35% 0px -55% 0px'});
+sections.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
